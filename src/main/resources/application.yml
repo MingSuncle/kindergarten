@@ -20,7 +20,7 @@ spring:
   # 数据库驱动
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.100.71.212:3306/ai_db?serverTimezone=GMT%2b8
+    url: jdbc:mysql://47.100.71.212:3306/kindergarten?serverTimezone=GMT%2b8
     username: root
     password: zza19991225
 
