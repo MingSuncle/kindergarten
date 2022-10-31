@@ -30,7 +30,7 @@ public class MessageController {
 
     @ApiOperation("测试用")
     @GetMapping("/getAll")
-    public R currentUnfinished() {
+    public R getAll() {
         R r = R.ok();
         List<Message> result = MessageDao.getAll();
         r.put("result",result);
