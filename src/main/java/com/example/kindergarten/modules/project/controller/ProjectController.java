@@ -49,4 +49,13 @@ public class ProjectController {
         r.put("result","success");
         return r;
     }
+
+    @ApiOperation("修改项目信息")
+    @PostMapping("/modify")
+    public  R modifyProject(@RequestBody Project project){
+        R r = R.ok();
+        ProjectDao.updateById(project);
+        r.put("result","success");
+        return r;
+    }
 }
