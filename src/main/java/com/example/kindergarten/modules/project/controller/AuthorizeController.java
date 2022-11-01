@@ -41,6 +41,12 @@ public class AuthorizeController {
     @GetMapping("/find")
     public R find(@RequestParam Integer userId,
                   @RequestParam String projectId){
+        R r = R.ok();
+        List<UserRight> result = AuthorizeDao.find(userId,projectId);
+        Integer totalNum = result.size();
+        r.put("result",result);
+        r.put("totalNum",totalNum);
+        return r;
 
     }
 

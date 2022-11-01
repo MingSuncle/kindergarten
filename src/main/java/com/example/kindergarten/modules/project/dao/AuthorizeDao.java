@@ -11,4 +11,6 @@ import java.util.List;
 public interface AuthorizeDao extends MppBaseMapper<UserRight> {
 
     public List<UserRight> getAll();
+
+    public List<UserRight> find(Integer userId,String projectId);
 }

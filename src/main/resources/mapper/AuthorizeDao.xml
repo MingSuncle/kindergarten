@@ -7,5 +7,14 @@
         FROM user_right
     </select>
 
+    <select id="find" resultType="com.example.kindergarten.modules.project.entity.UserRight">
+        SELECT *
+        FROM user_right
+        <where>
+
+
+        </where>
+    </select>
+
 
 </mapper>
