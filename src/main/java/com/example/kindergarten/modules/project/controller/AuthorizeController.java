@@ -28,9 +28,11 @@ public class AuthorizeController {
 
     @ApiOperation("查看所有授权条目")
     @GetMapping("/getAll")
-    public R getAll(){
+    public R getAll(@RequestParam(value = "currentPage") Integer currentPage,
+                    @RequestParam(value = "pageSize") Integer pageSize
+    ){
         R r = R.ok();
-        List<UserRight> result = AuthorizeDao.getAll();
+        List<UserRight> result = AuthorizeDao.getAll((currentPage - 1) * pageSize,pageSize);
         Integer totalNum = result.size();
         r.put("result",result);
         r.put("totalNum",totalNum);
@@ -39,9 +41,13 @@ public class AuthorizeController {
 
     @ApiOperation("条件查看")
     @GetMapping("/find")
-    public R find(@RequestParam Integer userId,
-                  @RequestParam String projectId){
+    public R find(@RequestParam(value = "userId",required = false) Integer userId,
+                  @RequestParam(value = "projectId",required = false) String projectId){
         R r = R.ok();
+        if (projectId != null && projectId.isEmpty()) {
+            projectId = null;
+        }
+
         List<UserRight> result = AuthorizeDao.find(userId,projectId);
         Integer totalNum = result.size();
         r.put("result",result);

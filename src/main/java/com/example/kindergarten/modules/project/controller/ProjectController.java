@@ -43,7 +43,7 @@ public class ProjectController {
 
     @ApiOperation("删除项目")
     @GetMapping("/delete")
-    public R deleteProject(@RequestParam String projectId){
+    public R deleteProject(@RequestParam(value = "projectId") String projectId){
         R r = R.ok();
         Integer I = ProjectDao.deleteById(projectId);
         r.put("result","success");

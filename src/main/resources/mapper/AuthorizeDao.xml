@@ -5,14 +5,21 @@
     <select id="getAll" resultType="com.example.kindergarten.modules.project.entity.UserRight">
         SELECT *
         FROM user_right
+        limit
+        #{currentPage},#{pageSize}
     </select>
 
     <select id="find" resultType="com.example.kindergarten.modules.project.entity.UserRight">
         SELECT *
         FROM user_right
         <where>
-
-
+        <if test="projectId != null">
+            `project_id` = #{projectId}
+        </if>
+        <if test="userId != null">
+            AND
+            `user_id` = #{userId}
+        </if>
         </where>
     </select>
 
