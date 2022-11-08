@@ -36,4 +36,14 @@ public class KeyMessageController {
 
     }
 
+    @ApiOperation("查看用户收藏")
+    @GetMapping("/get")
+    public R get(@RequestParam(value = "userId") Long userId){
+        R r = R.ok();
+
+
+        return r;
+
+    }
+
 }
