@@ -3,7 +3,14 @@
 
 <mapper namespace="com.example.kindergarten.modules.message.dao.KeyMessageDao">
     <select id="getMessageByUserId" resultType="com.example.kindergarten.modules.message.entity.Message">
-
+    SELECT *
+    from `AImessage` `t1`,`AImessage_vip` `t2`
+    WHERE
+        t2.`user_id` = #{userId}
+    AND
+        t2.`message_id` = t1.`message_id`
+    limit
+        #{currentPage},#{pageSize}
     </select>
 
 
