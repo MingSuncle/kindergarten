@@ -53,10 +53,11 @@ public class KeyMessageController {
 
     @ApiOperation("取消收藏")
     @GetMapping("/delete")
-    public R delete(@RequestParam(value = "message_id") Long messageId)
+    public R delete(@RequestParam(value = "message_id") Long messageId,
+                    @RequestParam(value = "usr_id") Long usrId)
     {
         R r = R.ok();
-        keyMessageDao.deleteByMessageId(messageId);
+        keyMessageDao.delete(usrId,messageId);
         r.put("result","success");
         return r;
     }

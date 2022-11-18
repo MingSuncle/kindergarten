@@ -12,6 +12,13 @@
     limit
         #{currentPage},#{pageSize}
     </select>
-
+    <delete id="delete">
+        DELETE
+        FROM `AImessage_vip`
+        WHERE
+            `message_id` = #{messageId}
+        AND
+            `user_id` = #{usrId}
+    </delete>
 
 </mapper>

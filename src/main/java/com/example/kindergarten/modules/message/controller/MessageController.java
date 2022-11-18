@@ -44,16 +44,14 @@ public class MessageController {
     @GetMapping("/find")
     public R findMessage(
             @RequestParam(value = "usr_id",required = false) String usrId,
-            @RequestParam(value = "pro_id", required = false) LinkedList<String> proId,
-            @RequestParam(value = "begin_time", required = false) String beginTime,
-            @RequestParam(value = "end_time", required = false) String endTime,
-            @RequestParam(value = "event_type", required = false) LinkedList<String> type,
-            @RequestParam(value = "current_page") Integer currentPage,
-            @RequestParam(value = "page_size") Integer pageSize) {
+            @RequestParam(value = "pro_id",required = false) LinkedList<String> proId,
+            @RequestParam(value = "begin_time",required = false) String beginTime,
+            @RequestParam(value = "end_time",required = false) String endTime,
+            @RequestParam(value = "event_type",required = false) LinkedList<String> type,
+            @RequestParam(value = "current_page",required = false) Integer currentPage,
+            @RequestParam(value = "page_size",required = false) Integer pageSize) {
         R r = R.ok();
-        if(proId == null){
-            return R.error();
-        }
+
         while (proId != null && !proId.isEmpty()) {
             if (StringUtils.isBlank(proId.getLast())) {
                 proId.removeLast();
