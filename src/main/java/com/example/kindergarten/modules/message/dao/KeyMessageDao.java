@@ -18,4 +18,5 @@ public interface KeyMessageDao extends MppBaseMapper<KeyMessage> {
         public void delete(@Param(value = "messageId") Long messageId,
                            @Param(value = "usrId") Long usrId);
 
+        public Integer NumByUserId(@Param(value = "userId")Long userId);
 }

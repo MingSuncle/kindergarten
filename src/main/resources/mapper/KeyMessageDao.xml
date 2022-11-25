@@ -12,6 +12,16 @@
     limit
         #{currentPage},#{pageSize}
     </select>
+
+    <select id="NumByUserId" resultType="Integer">
+        SELECT COUNT(*)
+        from `AImessage` `t1`,`AImessage_vip` `t2`
+        WHERE
+            t2.`user_id` = #{userId}
+          AND
+            t2.`message_id` = t1.`message_id`
+    </select>
+
     <delete id="delete">
         DELETE
         FROM `AImessage_vip`

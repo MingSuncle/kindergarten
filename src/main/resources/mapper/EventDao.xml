@@ -9,5 +9,9 @@
         #{currentPage},#{pageSize}
     </select>
 
+    <select id="getNum" resultType="Integer">
+        SELECT  count(*)
+        FROM `AIevent`
+    </select>
 
 </mapper>

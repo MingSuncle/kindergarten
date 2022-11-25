@@ -38,4 +38,30 @@
         </if>
     </select>
 
+    <select id="MessageNum" resultType="Integer">
+        select COUNT(*) from `AImessage`
+        <where>
+
+            <if test="proId != null">
+                AND `project_id` in
+                <foreach item="id" collection="proId"  open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+            <if test="type != null and type.size() > 0">
+                AND `AIevent_name` in
+                <foreach item="ty" collection="type"  open="(" separator="," close=")">
+                    #{ty}
+                </foreach>
+            </if>
+            <if test="beginTime != null and beginTime!='' ">
+                AND `time` <![CDATA[ > ]]> #{beginTime}
+            </if>
+            <if test="endTime != null and endTime!=''">
+                AND `time` <![CDATA[ < ]]>   #{endTime}
+            </if>
+
+        </where>
+    </select>
+
 </mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kindergarten.modules.equipment.dao.BoxDao">
+    <resultMap id="boxMap" type="com.example.kindergarten.modules.equipment.entity.Box">
+        <result property="boxId" column="box_id" />
+        <result property="boxName" column="box_name"/>
+        <result property="boxIp" column="box_ip"/>
+        <result property="projectId" column="project_id" />
+        <result property="settingFileVersion" column="setting_file_version" />
+        <result property="modelFile" column="model_file" />
+        <result property="modelFileVersion" column="model_file_version" />
+        <result property="state" column="state" />
+        <result property="projectName" column="project_name" />
+
+    </resultMap>
+
+    <select id="getBoxByUserId" resultMap="boxMap">
+        SELECT t1.*,t2.`project_name`
+        FROM box_config t1 ,project t2 ,(SELECT DISTINCT project_id FROM user_right WHERE user_id = #{userId} )AS t3
+        WHERE
+            t3.`project_id` = t1.`project_id`
+          AND
+            t2.`project_id` = t1.`project_id`
+        limit
+        #{currentPage},#{pageSize}
+    </select>
+
+    <select id="getBoxNumByUserId" resultType="Integer">
+        SELECT COUNT(*)
+        FROM box_config t1 ,(SELECT DISTINCT project_id FROM user_right WHERE user_id = #{userId} )AS t3
+        WHERE
+            t3.`project_id` = t1.`project_id`
+    </select>
+
+    <select id="getBoxByProjectId" resultMap="boxMap">
+
+    </select>
+
+    <select id="getBoxNumByProjectId" resultType="Integer">
+
+    </select>
+</mapper>

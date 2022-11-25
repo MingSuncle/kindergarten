@@ -74,7 +74,7 @@ public class MessageController {
             type = null;
         }
         List<Message> list = MessageDao.findMessage(usrId, proId,  beginTime, endTime, type, (currentPage - 1) * pageSize, pageSize);
-        Integer totalNum = list.size();
+        Integer totalNum = MessageDao.MessageNum(usrId, proId,  beginTime, endTime, type);
         r.put("result", list);
         r.put("totalNum",totalNum);
         return r;

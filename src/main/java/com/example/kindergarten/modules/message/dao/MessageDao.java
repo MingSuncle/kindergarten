@@ -24,6 +24,12 @@ import java.util.List;
                                   @Param(value="type")List type,
                                   @Param(value="currentPage")Integer currentPage,
                                   @Param(value="pageSize")Integer pageSize);
+
+        Integer MessageNum(@Param(value="usrId") String usrId,
+                                  @Param(value="proId")List proId,
+                                  @Param(value="beginTime")String beginTime,
+                                  @Param(value="endTime")String endTime,
+                                  @Param(value="type")List type);
     }
 
 

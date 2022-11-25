@@ -14,4 +14,8 @@ public interface AuthorizeDao extends MppBaseMapper<UserRight> {
     public List<UserRight> getAll(@Param("currentPage") int currentPage,@Param("pageSize") int pageSize);
 
     public List<UserRight> find(@Param("userId") Integer userId,@Param("projectId") String projectId);
+
+    public Integer totalNum();
+
+    public Integer findNum(@Param("userId") Integer userId,@Param("projectId") String projectId);
 }

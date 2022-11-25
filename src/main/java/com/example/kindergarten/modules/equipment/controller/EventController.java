@@ -37,7 +37,7 @@ public class EventController {
                     @RequestParam(value = "pageSize") Integer pageSize){
         R r = R.ok();
         List<Event> result = eventDao.getAll((currentPage - 1) * pageSize, pageSize);
-        Integer totalNum = result.size();
+        Integer totalNum = eventDao.getNum();
         r.put("result",result);
         r.put("totalNum",totalNum);
         return r;

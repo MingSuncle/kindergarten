@@ -33,7 +33,7 @@ public class AuthorizeController {
     ){
         R r = R.ok();
         List<UserRight> result = AuthorizeDao.getAll((currentPage - 1) * pageSize,pageSize);
-        Integer totalNum = result.size();
+        Integer totalNum = AuthorizeDao.totalNum();
         r.put("result",result);
         r.put("totalNum",totalNum);
         return r;
@@ -49,7 +49,7 @@ public class AuthorizeController {
         }
 
         List<UserRight> result = AuthorizeDao.find(userId,projectId);
-        Integer totalNum = result.size();
+        Integer totalNum = AuthorizeDao.totalNum();
         r.put("result",result);
         r.put("totalNum",totalNum);
         return r;

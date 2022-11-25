@@ -9,6 +9,11 @@
         #{currentPage},#{pageSize}
     </select>
 
+    <select id="totalNum" resultType="Integer">
+        SELECT COUNT(*)
+        FROM user_right
+    </select>
+
     <select id="find" resultType="com.example.kindergarten.modules.project.entity.UserRight">
         SELECT *
         FROM user_right
@@ -20,6 +25,20 @@
             AND
             `user_id` = #{userId}
         </if>
+        </where>
+    </select>
+
+    <select id="findNum" resultType="Integer">
+        SELECT COUNT(*)
+        FROM user_right
+        <where>
+            <if test="projectId != null">
+                `project_id` = #{projectId}
+            </if>
+            <if test="userId != null">
+                AND
+                `user_id` = #{userId}
+            </if>
         </where>
     </select>
 

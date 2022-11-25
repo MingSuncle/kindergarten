@@ -12,4 +12,6 @@ public interface EventDao extends MppBaseMapper<Event> {
 
     public List<Event> getAll(@Param(value = "currentPage") Integer currentPage,
                               @Param(value = "pageSize")Integer pageSize);
+
+    public Integer getNum();
 }

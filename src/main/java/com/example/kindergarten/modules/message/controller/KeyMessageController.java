@@ -46,7 +46,9 @@ public class KeyMessageController {
                  @RequestParam(value = "pageSize") Integer pageSize){
         R r = R.ok();
         List<Message> result = keyMessageDao.getMessageByUserId(userId,(currentPage - 1) * pageSize,pageSize);
+        Integer totalNum = keyMessageDao.NumByUserId(userId);
         r.put("result",result);
+        r.put("totalNum",totalNum);
         return r;
 
     }
@@ -57,7 +59,7 @@ public class KeyMessageController {
                     @RequestParam(value = "usr_id") Long usrId)
     {
         R r = R.ok();
-        keyMessageDao.delete(usrId,messageId);
+        keyMessageDao.delete(messageId,usrId);
         r.put("result","success");
         return r;
     }
