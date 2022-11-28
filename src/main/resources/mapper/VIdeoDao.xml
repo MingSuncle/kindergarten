@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kindergarten.modules.equipment.dao.VideoDao">
+
+
+    <select id="getByBoxId" resultType="com.example.kindergarten.modules.equipment.entity.Video">
+        SELECT *
+        FROM `video_config`
+        WHERE
+            `box_id` = #{boxId}
+        limit
+        #{currentPage},#{pageSize}
+
+    </select>
+
+    <select id="getNumByBoxId" resultType="Integer">
+        SELECT COUNT(*)
+        FROM `video_config`
+        WHERE `box_id` = #{boxId}
+    </select>
+</mapper>

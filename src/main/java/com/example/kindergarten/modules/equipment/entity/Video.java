@@ -37,4 +37,7 @@ public class Video {
 
     @TableField("state")
     private Integer state;
+
+    @TableField("box_id")
+    private String boxId;
 }
